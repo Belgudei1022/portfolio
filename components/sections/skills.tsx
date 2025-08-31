@@ -1,22 +1,22 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const skillsData = [
   {
     id: 1,
     skills: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "HTML/CSS",
-      "Tailwind CSS",
-      "Node.js",
-      "Python",
-      "MongoDB",
-      "MySQL",
-      "Git",
-      "GitHub",
+      { skill: "React", icon: "/svg/react.png" },
+      { skill: "Next.js", icon: "/svg/nextjs.png" },
+      { skill: "TypeScript", icon: "/svg/typescript.png" },
+      { skill: "JavaScript", icon: "/svg/javascript.png" },
+      { skill: "HTML/CSS", icon: "/svg/html.png" },
+      { skill: "Tailwind CSS", icon: "/svg/tailwind.png" },
+      { skill: "Node.js", icon: "/svg/node.png" },
+      { skill: "Python", icon: "/svg/python.png" },
+      { skill: "MongoDB", icon: "/svg/mongodb.png" },
+      { skill: "MySQL", icon: "/svg/mysql.png" },
+      { skill: "GitHub", icon: "/svg/github.png" },
     ],
   },
 ];
@@ -26,6 +26,7 @@ export default function Skills() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -38,13 +39,13 @@ export default function Skills() {
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -71,7 +72,7 @@ export default function Skills() {
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
                 {skills.skills.map((skill, skillIndex) => (
                   <div
-                    key={skill}
+                    key={skill.skill}
                     className={`p-3 sm:p-4 lg:p-6 bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 ${
                       isVisible
                         ? "animate-fade-in-up"
@@ -85,10 +86,19 @@ export default function Skills() {
                         ? `${0.5 + skillIndex * 0.1}s`
                         : "0s",
                     }}>
-                      
-                    <h4 className="text-white font-semibold text-sm sm:text-base lg:text-lg">
-                      {skill}
-                    </h4>
+                    <div className="flex flex-col items-center space-y-2">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 relative">
+                        <Image
+                          src={skill.icon}
+                          alt={skill.skill}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <h4 className="text-white font-semibold text-xs sm:text-sm lg:text-base text-center">
+                        {skill.skill}
+                      </h4>
+                    </div>
                   </div>
                 ))}
               </div>

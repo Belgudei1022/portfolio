@@ -1,29 +1,24 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const socialLinks = [
   {
     name: "GitHub",
     url: "https://github.com",
-    icon: "🐙",
+    icon: "/svg/github.png",
     color: "hover:text-gray-400",
   },
   {
-    name: "LinkedIn",
-    url: "https://linkedin.com",
-    icon: "💼",
+    name: "Facebook",
+    url: "https://facebook.com",
+    icon: "/svg/facebook.png",
     color: "hover:text-blue-400",
   },
   {
-    name: "Twitter",
-    url: "https://twitter.com",
-    icon: "🐦",
-    color: "hover:text-blue-300",
-  },
-  {
-    name: "Email",
-    url: "mailto:hello@example.com",
-    icon: "✉️",
+    name: "Gmail",
+    url: "https://gmail.com",
+    icon: "/svg/gmail.png",
     color: "hover:text-red-400",
   },
 ];
@@ -129,7 +124,12 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`text-2xl sm:text-3xl transition-all duration-300 hover:scale-110 ${social.color}`}>
-                    {social.icon}
+                    <Image
+                      src={social.icon}
+                      alt={social.name}
+                      width={40}
+                      height={40}
+                    />
                   </a>
                 ))}
               </div>
