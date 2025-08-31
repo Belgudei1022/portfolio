@@ -103,7 +103,7 @@ export default function Nav() {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
@@ -148,7 +148,7 @@ export default function Nav() {
       {isMobileMenuOpen && (
         <div className="fixed top-20 left-0 right-0 z-40 bg-black/95 backdrop-blur-md border-b border-white/10 md:hidden animate-in slide-in-from-top-2 duration-300">
           <div className="px-4 py-6 space-y-4">
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}

@@ -67,7 +67,7 @@ export default function Skills() {
           className={`space-y-8 sm:space-y-12 transition-all duration-1000 delay-300 ${
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"
           }`}>
-          {skillsData.map((skills, categoryIndex) => (
+          {skillsData.map((skills) => (
             <div key={skills.id} className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
                 {skills.skills.map((skill, skillIndex) => (
