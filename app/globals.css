@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+.profile:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+  transition-delay: 0.7s;
+}
+
+.delay-800 {
+  animation-delay: 0.8s;
+  transition-delay: 0.8s;
+}
+
+.delay-1100 {
+  animation-delay: 1.1s;
+  transition-delay: 1.1s;
+}
+
+.delay-1500 {
+  animation-delay: 1.5s;
+  transition-delay: 1.5s;
+}
