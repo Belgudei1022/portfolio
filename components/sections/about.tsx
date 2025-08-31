@@ -6,6 +6,7 @@ export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -18,13 +19,13 @@ export default function About() {
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -45,18 +46,18 @@ export default function About() {
           className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed mb-8 sm:mb-12 px-4 transition-all duration-1000 delay-300 text-justify ${
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"
           }`}>
-          Намайг Бэлгүдэй гэдэг. Би 'Indra Cyber Institute' сургуулийг FullStack
-          Developer мэргэжлээр амжилттай дүүргэсэн. Одоогоор ажлын туршлагагүй ч
-          программчлалын чиглэлд гүнзгий сонирхолтой бөгөөд цааш улам бүр
-          мэдлэгээ хөгжүүлж дээшлүүлэх сонирхолтой байгаа. 'Indra Cyber
-          Instute'-д сураад Python, HTML/CSS, Next.js, React.js, MySQL зэрэг
-          технологиудыг эзэмшсэн. Би шинэ орчинд хурдан дасан зохицож, аливааг
-          түргэн ойлгон өөртөө шингээх чадвартай. Хамт олны дунд санаачлагатай
-          оролцож, шийдвэр гаргахдаа нямбай хандахыг эрхэмлэдэг бөгөөд
-          тогтвортой, найдвартайгаар ажиллахыг үргэлж чухалчилж авж үздэг.
-          Өөрийгөө хөгжүүлж, илүү ихийг сурахад үргэлж бэлэн байдаг тул богино
-          хугацаанд чухал ур чадваруудыг бүрэн эзэмшиж, бодит үр дүн гаргаж
-          чадна гэдэгтээ итгэлтэй байна.
+          Намайг Бэлгүдэй гэдэг. Би &apos;Indra Cyber Institute&apos; сургуулийг
+          FullStack Developer мэргэжлээр амжилттай дүүргэсэн. Одоогоор ажлын
+          туршлагагүй ч программчлалын чиглэлд гүнзгий сонирхолтой бөгөөд цааш
+          улам бүр мэдлэгээ хөгжүүлж дээшлүүлэх сонирхолтой байгаа. &apos;Indra
+          Cyber Instute&apos;-д сураад Python, HTML/CSS, Next.js, React.js,
+          MySQL зэрэг технологиудыг эзэмшсэн. Би шинэ орчинд хурдан дасан
+          зохицож, аливааг түргэн ойлгон өөртөө шингээх чадвартай. Хамт олны
+          дунд санаачлагатай оролцож, шийдвэр гаргахдаа нямбай хандахыг
+          эрхэмлэдэг бөгөөд тогтвортой, найдвартайгаар ажиллахыг үргэлж
+          чухалчилж авж үздэг. Өөрийгөө хөгжүүлж, илүү ихийг сурахад үргэлж
+          бэлэн байдаг тул богино хугацаанд чухал ур чадваруудыг бүрэн эзэмшиж,
+          бодит үр дүн гаргаж чадна гэдэгтээ итгэлтэй байна.
         </p>
       </div>
     </div>

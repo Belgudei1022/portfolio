@@ -33,6 +33,7 @@ export default function Contact() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -45,13 +46,13 @@ export default function Contact() {
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -74,7 +75,7 @@ export default function Contact() {
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"
           }`}>
           Have some big idea or brand to develop and need help? Then reach out
-          we'd love to hear about your project and provide help.
+          we&apos;d love to hear about your project and provide help.
         </p>
 
         <div
@@ -133,8 +134,6 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-
-            
           </div>
         </div>
       </div>

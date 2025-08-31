@@ -395,6 +395,8 @@ export default function Orb({
     resize,
     handleMouseMove,
     handleMouseLeave,
+    frag,
+    vert,
   ]);
 
   // Show error state if WebGL fails
