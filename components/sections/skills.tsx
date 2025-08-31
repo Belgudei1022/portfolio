@@ -54,10 +54,10 @@ export default function Skills() {
     <div
       ref={sectionRef}
       id="skills"
-      className="flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
       <div className="max-w-6xl mx-auto text-center">
         <h2
-          className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 sm:mb-12 transition-all duration-1000 ${
+          className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-16 sm:mb-20 lg:mb-24 transition-all duration-1000 ${
             isVisible ? "animate-fade-in" : "opacity-0 translate-y-8"
           }`}>
           Skills & Technologies

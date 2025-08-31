@@ -26,7 +26,9 @@ export default function Nav() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => item.href.substring(1));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 200; // Increased offset for better detection
+
+      let currentSection = "";
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -38,12 +40,22 @@ export default function Nav() {
             scrollPosition >= offsetTop &&
             scrollPosition < offsetTop + offsetHeight
           ) {
-            setActiveSection(section);
+            currentSection = section;
             break;
           }
         }
       }
+
+      // If we're at the top, set active to empty or "about"
+      if (scrollPosition < 300) {
+        currentSection = "";
+      }
+
+      setActiveSection(currentSection);
     };
+
+    // Initial call
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -52,7 +64,11 @@ export default function Nav() {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const offsetTop = element.offsetTop - 80; // Account for fixed navbar height
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
     }
     setIsMobileMenuOpen(false);
   };
@@ -67,7 +83,9 @@ export default function Nav() {
         }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <div className="flex items-center space-x-3 hover:scale-105 transition-transform duration-300">
+            <div
+              className="flex items-center space-x-3 hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               <div className="relative">
                 <Image
                   src="/profile.png"
@@ -143,7 +161,9 @@ export default function Nav() {
               </button>
             ))}
 
-            <button className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg shadow-lg hover:scale-95 transition-transform duration-300">
+            <button
+              onClick={() => scrollToSection("#contact")}
+              className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg shadow-lg hover:scale-95 transition-transform duration-300">
               Get In Touch
             </button>
           </div>
